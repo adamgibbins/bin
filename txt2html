@@ -1,0 +1,8 @@
+#!/bin/bash
+if [[ $# = 0 ]] ; then
+  echo "Usage:    $0 textfile"
+  echo "Example:  $0 foobar.txt"
+  echo "Convert a text file to HTML."
+else
+  vim -u NONE -n -c ':syntax on' -c ':so $VIMRUNTIME/syntax/2html.vim' -c ':wqa' $1 &>/dev/null
+fi

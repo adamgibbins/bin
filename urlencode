@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+if [[ $# = 0 ]] ; then
+  echo "Usage:    $0 url"
+  echo "Example:  $0 http://www.example.com/test/path?with=some&foo=bar"
+  echo "Encode a URL."
+else
+  # RFC 2396
+  setopt extendedglob
+  input=( ${(s::)1} )
+  print ${(j::)input/(#b)([^A-Za-z0-9_.!~*\'\(\)-])/%${(l:2::0:)$(([##16]#match))}}
+fi

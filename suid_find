@@ -1,0 +1,3 @@
+#!/usr/bin/env zsh
+# Find all files in the $path with setuid bit set
+ls -latg $path | grep '^...s'
