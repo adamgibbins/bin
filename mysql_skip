@@ -1,0 +1,6 @@
+#!/bin/sh -e
+while mysql -e "SHOW SLAVE STATUS \G" | grep -q "Last_SQL_Errno: 1062"; do
+  mysql -e 'SET GLOBAL sql_slave_skip_counter = 1;'
+  mysql -e 'START SLAVE;'
+  /bin/sleep 0.1;
+done
